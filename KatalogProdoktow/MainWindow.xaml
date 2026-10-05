@@ -1,12 +1,23 @@
-﻿<Window x:Class="KatalogProdoktow.MainWindow"
+<Window x:Class="KatalogProdoktow.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KatalogProdoktow"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        mc:Ignorable="d" Width="800" Height="800">
+    <StackPanel Margin="20,20,20,20" Width="800" Height="415">
+        <TextBlock Text="Nazwa produktu"/>
+        <TextBox x:Name="NazwaTextBox" Margin="0,5,0,10"  />
+        
+        <TextBlock Text="Cena"/>
+        <TextBox x:Name="CenaTextBox" Margin="0,5,0,10" />
+        
+        <TextBlock Text="Ilość"/>
+        <TextBox x:Name="IloscTextBox" Margin="0,5,0,10" />
+        
+        <Button x:Name="ObliczButton" Content="Oblicz wartość" Click="Oblicz" />
 
-    </Grid>
+        <TextBlock x:Name="WynikTextblock" FontSize="16"/>
+
+    </StackPanel>
 </Window>
