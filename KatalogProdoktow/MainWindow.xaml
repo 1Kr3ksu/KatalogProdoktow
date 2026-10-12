@@ -5,19 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KatalogProdoktow"
         mc:Ignorable="d" Width="800" Height="800">
-    <StackPanel Margin="20,20,20,20" Width="800" Height="415">
-        <TextBlock Text="Nazwa produktu"/>
-        <TextBox x:Name="NazwaTextBox" Margin="0,5,0,10"  />
-        
-        <TextBlock Text="Cena"/>
-        <TextBox x:Name="CenaTextBox" Margin="0,5,0,10" />
-        
-        <TextBlock Text="Ilość"/>
-        <TextBox x:Name="IloscTextBox" Margin="0,5,0,10" />
-        
-        <Button x:Name="ObliczButton" Content="Oblicz wartość" Click="Oblicz" />
+    
+    <Grid Margin="20,20,20,20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/> <!--Tyle ile potrzebujesz-->
+            <ColumnDefinition Width="*" /><!--Tyle ile zostanie--> 
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" /> <!--Nazwa -->
+            <RowDefinition Height="Auto" /><!--Cena -->
+            <RowDefinition Height="Auto" /><!--ilość -->
+            <RowDefinition Height="Auto" /> <!--combobox-->
+            <RowDefinition Height="Auto" /> <!--PromocjaCheckbox-->
+            <RowDefinition Height="Auto" /><!--przycisk -->
+            <RowDefinition Height="Auto" /><!--wynik -->
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Nazwa produktu"/>
+        <TextBox x:Name="NazwaTextBox" Grid.Row="0" Grid.Column="1" Margin="0,5,0,10"  />
 
-        <TextBlock x:Name="WynikTextblock" FontSize="16"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Cena"/>
+        <TextBox x:Name="CenaTextBox" Grid.Row="1" Grid.Column="1" Margin="0,5,0,10" />
 
-    </StackPanel>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Ilość"/>
+        <TextBox x:Name="IloscTextBox"  Grid.Row="2" Grid.Column="1" Margin="0,5,0,10" />
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Kategoria" VerticalAlignment="Center" />
+        <ComboBox x:Name="KategorieComboBox"
+          Grid.Row="3"
+          Grid.Column="1"
+          Margin="0,5,0,10">
+            <ComboBoxItem Content="Elektronika"/>
+            <ComboBoxItem Content="Spożywcze"/>
+            <ComboBoxItem Content="Odzież"/>
+            <ComboBoxItem Content="Inne"/>
+        </ComboBox>
+
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Promocja" VerticalAlignment="Center" />
+        <CheckBox x:Name="PromocjaCheckBox" Grid.Row="4" Grid.Column="1" Margin="0,5,0,10"/>
+
+        <Button  x:Name="ObliczButton" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Content="Oblicz wartość" Click="Oblicz" />
+
+        <TextBlock x:Name="WynikTextblock" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" FontSize="16"/>
+    </Grid>
 </Window>
