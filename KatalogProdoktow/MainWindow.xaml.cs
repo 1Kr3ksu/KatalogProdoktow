@@ -1,4 +1,5 @@
 using System.Text;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,10 +17,17 @@ namespace KatalogProdoktow
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Produkt> produkty = new List<Produkt>();
         public MainWindow()
         {
             InitializeComponent();
+            KategorieComboBox.ItemsSource = new string[] { "Elektronika", "Odzież", "Książki", "Meble" };
+            KategorieComboBox.SelectedIndex = 0;
+            produkty.Add(new Produkt { Nazwa = "Laptop", Cena = 3500, Ilosc = 5, Kategoria = "Elektronika" });
+            produkty.Add(new Produkt { Nazwa = "Koszula", Cena = 200, Ilosc = 15, Kategoria = "Elektronika" });
+
         }
+
 
         private void Oblicz(object sender, RoutedEventArgs e)
         {
@@ -57,23 +65,20 @@ namespace KatalogProdoktow
                 return;
             }
 
+
+
             // Obliczenie wartości zamówienia
-            double suma = cena * ilosc;
+            double wartoscZamowienia = cena * ilosc;
 
             // Rabat 10%, jeśli zaznaczono promocję
             if (PromocjaCheckBox.IsChecked == true)
             {
-                suma *= 0.90;
+                wartoscZamowienia *= 0.90;
             }
 
             // Wyświetlenie wszystkich informacji
-            WynikTextblock.Text =
-                $"Nazwa produktu: {nazwa}\n" +
-                $"Kategoria: {kategoria}\n" +
-                $"Cena: {cena:F2} zł\n" +
-                $"Ilość: {ilosc}\n" +
-                $"Promocja: {promocja}\n" +
-                $"Wartość zamówienia: {suma:F2} zł";
+            WynikTextblock.Text = $"{NazwaTextBox.Text} ({kategoria}): {wartoscZamowienia:F2} zł";
+
         }
     }
 }
