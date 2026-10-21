@@ -18,7 +18,9 @@ namespace KatalogProdoktow
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<Produkt> produkty = new ObservableCollection<Produkt>();
+        //jeżeli potrzebujemy skorzystać z czegoś przez data binding to musi być publiczne i
+        //musi być własnością (property) , a nie polem (field) - musi mieć get i set
+        public ObservableCollection<Produkt> produkty { get; set; } = new ObservableCollection<Produkt>();
         public MainWindow()
         {
             InitializeComponent();
@@ -27,7 +29,7 @@ namespace KatalogProdoktow
             KategorieComboBox.SelectedIndex = 0;
             produkty.Add(new Produkt { Nazwa = "Laptop", Cena = 3500, Ilosc = 5, Kategoria = "Elektronika" });
             produkty.Add(new Produkt { Nazwa = "Koszula", Cena = 200, Ilosc = 15, Kategoria = "Elektronika" });
-
+            DataContext = this;
         }
 
 
