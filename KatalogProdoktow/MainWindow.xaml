@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KatalogProdoktow"
-        mc:Ignorable="d" Width="800" Height="800">
+        mc:Ignorable="d" Width="600" Height="800">
 
 	<Grid Margin="20,20,20,20">
 		<Grid.ColumnDefinitions>
@@ -12,6 +12,7 @@
 			<!-- tyle ile potrzebujesz -->
 			<ColumnDefinition Width="*" />
 			<!-- tyle ile zostanie -->
+			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
@@ -71,5 +72,11 @@
 			</ListBox.ItemTemplate>
 		</ListBox>
 		<Button x:Name="UsunProduktButton" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Content="Usuń produkt" Click="UsunProdukt" />
+		<StackPanel Grid.Row="0" Grid.Column="2" Grid.RowSpan="10" Margin="20,0,0,0" DataContext="{Binding SelectedItem, ElementName=ListaProduktow}">
+			<TextBlock Text="{Binding Nazwa}" FontSize="18" />
+			<TextBlock Text="{Binding Ilosc, StringFormat=Na stanie {0} szt.}" />
+			<TextBlock Text="{Binding Cena, StringFormat=Cena: {0:F2} zł}" />
+			<!--TODO: dodaj wartość magazynu - będziesz potrzebować publicznej właściwości w klasie Produkty-->
+		</StackPanel>
 	</Grid>
 </Window>
