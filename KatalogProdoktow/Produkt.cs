@@ -18,10 +18,10 @@ namespace KatalogProdoktow
         public int Ilosc { get; set; }
         public string Kategoria { get; set; } = "";
         //nadpisujemy domyślną metodę ToString, aby zwracała czytelny opis produktu
-        public override string ToString()
-        {
-            return $"{Nazwa} ({Kategoria}): {Cena:F2} zł, ilość: {Ilosc}";
-        }
+        //public override string ToString()
+        //{
+        //    return $"{Nazwa} ({Kategoria}): {Cena:F2} zł, ilość: {Ilosc}";
+        //}
     }
 }
 
