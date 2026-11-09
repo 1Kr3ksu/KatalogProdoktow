@@ -105,6 +105,27 @@ namespace KatalogProdoktow
             {
                 MessageBox.Show("Nie wybrano produktu do usunięcia.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+        }
+        private void PokazZaznaczony(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListaProduktow.SelectedItem is not Produkt p) return;
+        
+            NazwaTextBox.Text = p.Nazwa;
+            CenaTextBox.Text = p.Cena.ToString("F2");
+            IloscTextBox.Text = p.Ilosc.ToString();
+        }
+        private void Zapisz(object sender, RoutedEventArgs e)
+        {
+            if (ListaProduktow.SelectedItem is not Produkt p) return;
+            if (!double.TryParse(CenaTextBox.Text, out double cena) || cena < 0) return;
+            if (!int.TryParse(IloscTextBox.Text, out int ilosc) || ilosc < 0) return;
+            string nazwa = NazwaTextBox.Text;
+            p.Nazwa = nazwa;
+            p.Cena = cena;
+            p.Ilosc = ilosc;
+            WynikTextblock.Text = $"Zapisano zmiany dla produktu: {p.Nazwa}";
+
         }
     }
 }
