@@ -30,9 +30,7 @@ namespace KatalogProdoktow
 
         private void Zmiana(string nazwaWlasciwosci)
         {
-            PropertyChanged?.Invoke(
-                this,
-                new PropertyChangedEventArgs(nazwaWlasciwosci));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nazwaWlasciwosci));
         }
     }
 }
